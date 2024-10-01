@@ -45,8 +45,7 @@
             display: block;
             margin: 0 auto;
             background-color: steelblue; /* Default canvas background */
-            width: 90%; /* Adjust the width to zoom out */
-            max-width: 800px; /* Set a maximum width for larger screens */
+            max-width: 100%; /* Make canvas responsive */
             height: auto; /* Maintain aspect ratio */
             /* Add these properties */
             touch-action: manipulation; /* Prevents double-tap zoom on touch devices */
@@ -101,8 +100,8 @@
         // General settings
         let gamePlaying = false;
         const gravity = 0.5;
-        const speed = 4.7;
-        const size = [40, 30];
+        const speed = 3.7;
+        const size = [51, 36];
         const jump = -11.5;
         const cTenth = (canvas.width / 10);
 
@@ -114,7 +113,7 @@
             pipes;
 
         // Pipe settings
-        const pipeWidth = 60;
+        const pipeWidth = 78;
         const pipeGap = 270;
         const pipeLoc = () => (Math.random() * ((canvas.height - (pipeGap + pipeWidth)) - pipeWidth)) + pipeWidth;
 
