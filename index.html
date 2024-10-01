@@ -114,9 +114,9 @@
 
         // Pipe settings
         const pipeWidth = 78;
-        const pipeGap = 300;
+        const pipeGap = 275;
         const pipeLoc = () => (Math.random() * ((canvas.height - (pipeGap + pipeWidth)) - pipeWidth)) + pipeWidth;
-
+        const horizontalPipeGap = 80;
         const setup = () => {
             currentScore = 0;
             flight = jump;
@@ -126,7 +126,7 @@
             // Define an offset to create space before the first pipe
             const pipeOffset = 200; // Adjust this value to increase or decrease space
             // Setup first 3 pipes
-            pipes = Array(3).fill().map((a, i) => [canvas.width + pipeOffset + (i * (pipeGap + pipeWidth)), pipeLoc()]);
+            pipes = Array(3).fill().map((a, i) => [canvas.width + pipeOffset + (i * (pipeGap + pipeWidth + horizontalPipeGap)), pipeLoc()]);
         };
 
         const render = () => {
