@@ -156,7 +156,7 @@
                         bestScore = Math.max(bestScore, currentScore);
                         
                         // Remove & create new pipe
-                        pipes = [...pipes.slice(1), [pipes[pipes.length - 1][0] + pipeGap + pipeWidth, pipeLoc()]];
+                        pipes = [...pipes.slice(1), [pipes[pipes.length - 1][0] + pipeGap + pipeWidth + horizontalPipeGap, pipeLoc()]];
                     }
                 
                     // If hit the pipe, end
