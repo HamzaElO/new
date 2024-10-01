@@ -10,6 +10,10 @@
 
     <!-- CSS Styles -->
     <style>
+        * {
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
         body {
             margin: 0;
             text-align: center;
@@ -39,7 +43,37 @@
             display: block;
             margin: 0 auto;
             background-color: steelblue; /* Default canvas background */
+            max-width: 100%; /* Make canvas responsive */
+            height: auto; /* Maintain aspect ratio */
+            /* Add these properties */
+            touch-action: manipulation; /* Prevents double-tap zoom on touch devices */
+            overflow: hidden; /* Hides any overflow */
         }
+        @media (max-width: 600px) {
+                header {
+                    width: 90%; /* Use more of the screen on small devices */
+                    margin: 0 auto; /* Center the header */
+                    padding: 0 5%; /* Add horizontal padding to prevent cutting off edges */
+                }
+            
+                h1 {
+                    font-size: 24px; /* Adjust the font size for the title */
+                    padding: 0.8rem 0; /* Reduce padding */
+                }
+            
+                .score-container {
+                    flex-direction: column; /* Stack scores on small screens */
+                    align-items: center; /* Center the score items */
+                    padding: 5px 0; /* Adjust padding for better spacing */
+                }
+            
+                canvas {
+                    width: 100%; /* Make the canvas full width on small devices */
+                    height: auto; /* Adjust height to maintain aspect ratio */
+                    margin: 0; /* Remove margin to avoid clipping */
+                    border: none; /* Ensure no border */
+                }
+            }
     </style>
 </head>
 <body>
@@ -64,7 +98,7 @@
         // General settings
         let gamePlaying = false;
         const gravity = 0.5;
-        const speed = 6.2;
+        const speed = 4.7;
         const size = [51, 36];
         const jump = -11.5;
         const cTenth = (canvas.width / 10);
@@ -87,9 +121,10 @@
 
             // Set initial flyHeight (middle of screen - size of the bird)
             flyHeight = (canvas.height / 2) - (size[1] / 2);
-
+            // Define an offset to create space before the first pipe
+            const pipeOffset = 200; // Adjust this value to increase or decrease space
             // Setup first 3 pipes
-            pipes = Array(3).fill().map((a, i) => [canvas.width + (i * (pipeGap + pipeWidth)), pipeLoc()]);
+            pipes = Array(3).fill().map((a, i) => [canvas.width + pipeOffset + (i * (pipeGap + pipeWidth)), pipeLoc()]);
         };
 
         const render = () => {
