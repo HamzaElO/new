@@ -154,6 +154,7 @@
                         currentScore++;
                         // Check if it's the best score
                         bestScore = Math.max(bestScore, currentScore);
+                        lastScore = currentScore;
                         
                         // Remove & create new pipe
                         pipes = [...pipes.slice(1), [pipes[pipes.length - 1][0] + pipeGap + pipeWidth + horizontalPipeGap, pipeLoc()]];
@@ -179,7 +180,7 @@
                 ctx.drawImage(img, 432, Math.floor((index % 9) / 3) * size[1], ...size, ((canvas.width / 2) - size[0] / 2), flyHeight, ...size);
                 flyHeight = (canvas.height / 2) - (size[1] / 2);
                 // Text accueil
-                ctx.fillText(`Best score : ${bestScore}`, 85, 245);
+                ctx.fillText(`Last score : ${lastScore}`, 85, 245);
                 ctx.fillText('Click to play', 90, 535);
                 ctx.font = "bold 30px courier";
             }
